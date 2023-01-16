@@ -14,6 +14,7 @@
 		41DC5F8A2975F95C0087B017 /* StocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC5F892975F95C0087B017 /* StocksTests.swift */; };
 		41DC5F942975F95C0087B017 /* StocksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC5F932975F95C0087B017 /* StocksUITests.swift */; };
 		41DC5F962975F95C0087B017 /* StocksUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC5F952975F95C0087B017 /* StocksUITestsLaunchTests.swift */; };
+		41DC5FA42975FA090087B017 /* XCAStocksAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 41DC5FA32975FA090087B017 /* XCAStocksAPI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41DC5FA42975FA090087B017 /* XCAStocksAPI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +145,9 @@
 			dependencies = (
 			);
 			name = Stocks;
+			packageProductDependencies = (
+				41DC5FA32975FA090087B017 /* XCAStocksAPI */,
+			);
 			productName = Stocks;
 			productReference = 41DC5F752975F95A0087B017 /* Stocks.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +220,9 @@
 				Base,
 			);
 			mainGroup = 41DC5F6C2975F95A0087B017;
+			packageReferences = (
+				41DC5FA22975FA090087B017 /* XCRemoteSwiftPackageReference "XCAStocksAPI" */,
+			);
 			productRefGroup = 41DC5F762975F95A0087B017 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -583,6 +591,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		41DC5FA22975FA090087B017 /* XCRemoteSwiftPackageReference "XCAStocksAPI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alfianlosari/XCAStocksAPI";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		41DC5FA32975FA090087B017 /* XCAStocksAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 41DC5FA22975FA090087B017 /* XCRemoteSwiftPackageReference "XCAStocksAPI" */;
+			productName = XCAStocksAPI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 41DC5F6D2975F95A0087B017 /* Project object */;
 }
