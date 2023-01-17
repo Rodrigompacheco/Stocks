@@ -90,6 +90,8 @@ class SearchStockViewController: UIViewController {
         activityIndicator.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
         }
+        
+        activityIndicator.color = .white
     }
     
     @objc func searchStockButtonPressed() {

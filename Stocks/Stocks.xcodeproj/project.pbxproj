@@ -46,6 +46,9 @@
 		41DC6028297669AD0087B017 /* StockDetailsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC6027297669AD0087B017 /* StockDetailsProtocols.swift */; };
 		41DC603229767D7C0087B017 /* StockDetailsSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC603129767D7C0087B017 /* StockDetailsSwiftUIView.swift */; };
 		41DC603429767DF20087B017 /* LineGraphSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC603329767DF10087B017 /* LineGraphSwiftUIView.swift */; };
+		41DC60362976F2530087B017 /* StockChartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC60352976F2530087B017 /* StockChartItem.swift */; };
+		41DC60382976F39A0087B017 /* StockChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC60372976F39A0087B017 /* StockChartData.swift */; };
+		41DC603A29772D640087B017 /* LoadingSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC603929772D630087B017 /* LoadingSwiftUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +99,9 @@
 		41DC6027297669AD0087B017 /* StockDetailsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailsProtocols.swift; sourceTree = "<group>"; };
 		41DC603129767D7C0087B017 /* StockDetailsSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailsSwiftUIView.swift; sourceTree = "<group>"; };
 		41DC603329767DF10087B017 /* LineGraphSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphSwiftUIView.swift; sourceTree = "<group>"; };
+		41DC60352976F2530087B017 /* StockChartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockChartItem.swift; sourceTree = "<group>"; };
+		41DC60372976F39A0087B017 /* StockChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockChartData.swift; sourceTree = "<group>"; };
+		41DC603929772D630087B017 /* LoadingSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSwiftUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				41DC603329767DF10087B017 /* LineGraphSwiftUIView.swift */,
+				41DC603929772D630087B017 /* LoadingSwiftUIView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -236,6 +243,8 @@
 		41DC5FED29761DE60087B017 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				41DC60372976F39A0087B017 /* StockChartData.swift */,
+				41DC60352976F2530087B017 /* StockChartItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -428,11 +437,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				41DC60262976693C0087B017 /* StockDetailsPresenter.swift in Sources */,
+				41DC60362976F2530087B017 /* StockChartItem.swift in Sources */,
 				41DC5FF129761F390087B017 /* Coordinator.swift in Sources */,
 				41DC5FB929761C2F0087B017 /* ViewController.swift in Sources */,
 				41DC601729763D8E0087B017 /* AppFonts.swift in Sources */,
 				41DC6024297668FB0087B017 /* StockDetailsViewController.swift in Sources */,
 				41DC6020297648040087B017 /* UITableViewExtension.swift in Sources */,
+				41DC60382976F39A0087B017 /* StockChartData.swift in Sources */,
 				41DC5FB529761C2F0087B017 /* AppDelegate.swift in Sources */,
 				41DC6007297623F40087B017 /* APIError.swift in Sources */,
 				41DC603229767D7C0087B017 /* StockDetailsSwiftUIView.swift in Sources */,
@@ -440,6 +451,7 @@
 				41DC603429767DF20087B017 /* LineGraphSwiftUIView.swift in Sources */,
 				41DC60012976221B0087B017 /* SearchStockProtocols.swift in Sources */,
 				41DC5FB729761C2F0087B017 /* SceneDelegate.swift in Sources */,
+				41DC603A29772D640087B017 /* LoadingSwiftUIView.swift in Sources */,
 				41DC601A29763E790087B017 /* Global.swift in Sources */,
 				41DC6028297669AD0087B017 /* StockDetailsProtocols.swift in Sources */,
 				41DC5FFB297621D70087B017 /* SearchStockPresenter.swift in Sources */,

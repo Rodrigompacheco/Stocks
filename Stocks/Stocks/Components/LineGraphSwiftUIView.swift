@@ -10,7 +10,7 @@ import XCAStocksAPI
 
 struct GraphNode: Identifiable {
     let id = UUID()
-    let value: Int
+    let value: StockChartItem
     let percentageX: Double
     let percentageY: Double
     
@@ -41,11 +41,15 @@ struct LineGraph: Shape {
 struct LineGraphSwiftUIView: View {
     
     let graphNodes: [GraphNode]
+    let growingState: Bool
     @State private var selectedNode: GraphNode? = nil
-    @Binding private var selectedValue: Int?
+    @Binding private var selectedValue: StockChartItem?
+//    @Binding private var selectedDate: String?
     
-    init(values: [Int], selectedValue: Binding<Int?>) {
+    init(chartItems: [StockChartItem], growingState: Bool, selectedValue: Binding<StockChartItem?>) {
         self._selectedValue = selectedValue
+        self.growingState = growingState
+        let values = chartItems.map({ $0.value })
         guard var maxValue = values.max(), var minValue = values.min() else {
             graphNodes = [GraphNode]()
             return
@@ -57,7 +61,8 @@ struct LineGraphSwiftUIView: View {
         for i in values.indices {
             let percentageY = 1 - Double(values[i] - minValue) / Double(maxValue - minValue)
             let percentageX = Double(i) / Double (values.count - 1)
-            let newNode = GraphNode (value: values[i],
+            let newNode = GraphNode (value: StockChartItem(timestamp: chartItems[i].timestamp,
+                                                           value: values[i]),
                                      percentageX: percentageX,
                                      percentageY: percentageY)
             nodes.append(newNode)
@@ -90,13 +95,13 @@ struct LineGraphSwiftUIView: View {
     var body: some View {
         GeometryReader { reader in
             ZStack {
+                let graphLineColor = growingState == true ? Color.green : Color.red
                 LineGraph(nodes: graphNodes)
-                    .stroke(Color.black.opacity(0.8), style: StrokeStyle(lineWidth: 2.5, lineCap: .round, lineJoin: .round))
+                    .stroke(graphLineColor.opacity(0.8), style: StrokeStyle(lineWidth: 2.5, lineCap: .round, lineJoin: .round))
                 
                 selectedNodeHighlight(viewSize: reader.size)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.white.opacity(0.000001))
             .coordinateSpace(name: "chart")
             .gesture(dragGesture(size: reader.size))
         }
@@ -108,7 +113,7 @@ struct LineGraphSwiftUIView: View {
             let posX = viewSize.width * selectedNode.percentageX
             Rectangle ()
                 .foregroundColor (.white.opacity(0.5))
-                .frame (width: 4.5)
+                .frame (width: 1.5)
                 .position(x: posX, y: viewSize.height / 2)
             
             let point = selectedNode.point(for: viewSize)
@@ -119,7 +124,7 @@ struct LineGraphSwiftUIView: View {
                 
                 Circle()
                     .frame (width: 11, height: 11)
-                    .foregroundColor (Color .accentColor)
+                    .foregroundColor (Color.accentColor)
             }
             .position(x: point.x, y: point.y)
         }
@@ -147,9 +152,9 @@ struct LineGraphSwiftUIView: View {
     }
 }
 
-struct LineGraphSwiftUIView_Previews: PreviewProvider {
-    static var previews: some View {
-//        StockDetailsSwiftUIView(presenter: StockDetailsPresenter(service: XCAStocksAPI(), stock: Quote(symbol: "AAPL")))
-        StockDetailsSwiftUIView()
-    }
-}
+//struct LineGraphSwiftUIView_Previews: PreviewProvider {
+//    static var previews: some View {
+////        StockDetailsSwiftUIView(presenter: StockDetailsPresenter(service: XCAStocksAPI(), stock: Quote(symbol: "AAPL")))
+//        StockDetailsSwiftUIView(chartData: <#StockChartData#>)
+//    }
+//}
