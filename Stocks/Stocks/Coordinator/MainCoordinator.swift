@@ -24,9 +24,8 @@ class MainCoordinator: Coordinator {
     
     func start() {
         let service = XCAStocksAPI()
-        //TODO: Initialize VC
-//        let viewController = ViewController(presenter: Presenter(service: service))
-//        viewController.title = "Stocks"
-//        navigationController.pushViewController(viewController, animated: false)
+        let viewController = SearchStockViewController(presenter: SearchStockPresenter(service: service))
+        viewController.title = "Stocks"
+        navigationController.pushViewController(viewController, animated: false)
     }
 }
