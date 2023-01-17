@@ -33,21 +33,27 @@ class SearchStockPresenter {
     
     func searchStockButtonPressed(withText text: String) {
         search = text
+        isStocksListHidden = false
+        view?.changeStocksListVisibility()
+        view?.startLoading()
         
         Task {
             do {
-                let quotes = try await service.fetchQuotes(symbols: search)
+                let symbols = try await service.searchTickers(query: search, isEquityTypeOnly: false)
+                    .map({ $0.symbol })
+                    .joined(separator:",")
                 
                 do {
-                    let model = try JSONDecoder().decode(Stock.self, from: quotes.first as? Data ?? Data())
-                    print(model)
+                    stocks = try await service.fetchQuotes(symbols: symbols)
+
+                    view?.stopLoading()
+                    view?.reloadData()
                 } catch {
+                    view?.stopLoading()
                     print(error.localizedDescription)
                 }
-                
-                print(quotes)
-                
             } catch {
+                view?.stopLoading()
                 print(error.localizedDescription)
             }
         }

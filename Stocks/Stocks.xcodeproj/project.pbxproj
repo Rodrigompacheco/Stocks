@@ -24,8 +24,6 @@
 		41DC5FFF297621E50087B017 /* SearchStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC5FFD297621E50087B017 /* SearchStockViewController.swift */; };
 		41DC60012976221B0087B017 /* SearchStockProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC60002976221B0087B017 /* SearchStockProtocols.swift */; };
 		41DC60022976221B0087B017 /* SearchStockProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC60002976221B0087B017 /* SearchStockProtocols.swift */; };
-		41DC6004297623AF0087B017 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC6003297623AF0087B017 /* Stock.swift */; };
-		41DC6005297623AF0087B017 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC6003297623AF0087B017 /* Stock.swift */; };
 		41DC6007297623F40087B017 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC6006297623F40087B017 /* APIError.swift */; };
 		41DC6008297623F40087B017 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC6006297623F40087B017 /* APIError.swift */; };
 		41DC600B2976289C0087B017 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 41DC600A2976289C0087B017 /* SnapKit */; };
@@ -41,6 +39,8 @@
 		41DC601B29763E790087B017 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC601929763E790087B017 /* Global.swift */; };
 		41DC601D29763EAD0087B017 /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC601C29763EAD0087B017 /* UIScreenExtension.swift */; };
 		41DC601E29763EAD0087B017 /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC601C29763EAD0087B017 /* UIScreenExtension.swift */; };
+		41DC6020297648040087B017 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC601F297648040087B017 /* UITableViewExtension.swift */; };
+		41DC6021297648040087B017 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC601F297648040087B017 /* UITableViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +78,6 @@
 		41DC5FFA297621D70087B017 /* SearchStockPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockPresenter.swift; sourceTree = "<group>"; };
 		41DC5FFD297621E50087B017 /* SearchStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockViewController.swift; sourceTree = "<group>"; };
 		41DC60002976221B0087B017 /* SearchStockProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockProtocols.swift; sourceTree = "<group>"; };
-		41DC6003297623AF0087B017 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		41DC6006297623F40087B017 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		41DC600C297636AE0087B017 /* AppColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColorPalette.swift; sourceTree = "<group>"; };
 		41DC6010297637D80087B017 /* StockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTableViewCell.swift; sourceTree = "<group>"; };
@@ -86,6 +85,7 @@
 		41DC601629763D8E0087B017 /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		41DC601929763E790087B017 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		41DC601C29763EAD0087B017 /* UIScreenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
+		41DC601F297648040087B017 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,7 +225,6 @@
 		41DC5FED29761DE60087B017 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				41DC6003297623AF0087B017 /* Stock.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -242,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				41DC601C29763EAD0087B017 /* UIScreenExtension.swift */,
+				41DC601F297648040087B017 /* UITableViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -407,6 +407,7 @@
 				41DC5FF129761F390087B017 /* Coordinator.swift in Sources */,
 				41DC5FB929761C2F0087B017 /* ViewController.swift in Sources */,
 				41DC601729763D8E0087B017 /* AppFonts.swift in Sources */,
+				41DC6020297648040087B017 /* UITableViewExtension.swift in Sources */,
 				41DC5FB529761C2F0087B017 /* AppDelegate.swift in Sources */,
 				41DC6007297623F40087B017 /* APIError.swift in Sources */,
 				41DC5FF329761F510087B017 /* MainCoordinator.swift in Sources */,
@@ -419,7 +420,6 @@
 				41DC600D297636AE0087B017 /* AppColorPalette.swift in Sources */,
 				41DC601D29763EAD0087B017 /* UIScreenExtension.swift in Sources */,
 				41DC6011297637D80087B017 /* StockTableViewCell.swift in Sources */,
-				41DC6004297623AF0087B017 /* Stock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,10 +430,10 @@
 				41DC6015297638050087B017 /* StockTableViewCellPresenter.swift in Sources */,
 				41DC601E29763EAD0087B017 /* UIScreenExtension.swift in Sources */,
 				41DC60022976221B0087B017 /* SearchStockProtocols.swift in Sources */,
+				41DC6021297648040087B017 /* UITableViewExtension.swift in Sources */,
 				41DC5FFF297621E50087B017 /* SearchStockViewController.swift in Sources */,
 				41DC6012297637D80087B017 /* StockTableViewCell.swift in Sources */,
 				41DC5FCC29761C310087B017 /* StocksTests.swift in Sources */,
-				41DC6005297623AF0087B017 /* Stock.swift in Sources */,
 				41DC601B29763E790087B017 /* Global.swift in Sources */,
 				41DC601829763D8E0087B017 /* AppFonts.swift in Sources */,
 				41DC5FFC297621D70087B017 /* SearchStockPresenter.swift in Sources */,

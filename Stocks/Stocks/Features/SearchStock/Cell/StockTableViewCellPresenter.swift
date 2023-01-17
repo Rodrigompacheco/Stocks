@@ -26,7 +26,9 @@ class StockTableViewCellPresenter {
         view?.setupView()
         view?.setStockCodTitle("Id:")
         view?.setStockNameTitle("Name:")
-        view?.setStockPercentStatus("")
-        view?.setStockCurrentValue("")
+        view?.setStockCod(stock.symbol)
+        view?.setStockName(stock.displayName ?? "No data")
+        view?.setStockPercentStatus(String(stock.regularMarketChange ?? 0))
+        view?.setStockCurrentValue(String(stock.postMarketPrice ?? 0))
     }
 }

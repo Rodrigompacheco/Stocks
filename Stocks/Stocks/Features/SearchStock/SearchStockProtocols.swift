@@ -13,14 +13,14 @@ protocol StockTableCellView: AnyObject {
     func setStockNameTitle(_ title: String)
     func setStockPercentStatus(_ percent: String)
     func setStockCurrentValue(_ value: String)
-}
-
-protocol StockTableItemView: AnyObject {
-    func setupView()
-    func setStockTitle(_ title: String)
-    func setStockFullTitle(_ fullTitle: String)
+    func setStockCod(_ cod: String)
+    func setStockName(_ name: String)
 }
 
 protocol StockView: AnyObject{
     func showAlert(_ message: String)
+    func changeStocksListVisibility()
+    func reloadData()
+    func startLoading()
+    func stopLoading()
 }

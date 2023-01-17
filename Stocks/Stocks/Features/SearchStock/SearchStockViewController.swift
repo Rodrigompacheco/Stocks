@@ -14,6 +14,7 @@ class SearchStockViewController: UIViewController {
     private let stocksTableView = UITableView()
     private let searchStockTextField = UITextField()
     private let searchButton = UIButton()
+    private let activityIndicator = UIActivityIndicatorView()
     private let searchTFReducedConstraint = 10
     
     init(presenter: SearchStockPresenter) {
@@ -30,6 +31,7 @@ class SearchStockViewController: UIViewController {
         setupSearchStockTextField()
         setupSearchButton()
         setupStocksTableView()
+        setupActivityIndicator()
         presenter.attachView(view: self)
     }
     
@@ -78,6 +80,15 @@ class SearchStockViewController: UIViewController {
         stocksTableView.separatorColor = .clear
         stocksTableView.backgroundColor = AppColorPalette.mainBackground
         stocksTableView.isHidden = presenter.isStocksListHidden
+        stocksTableView.register(StockTableViewCell.self, forCellReuseIdentifier: StockTableViewCell.identifier)
+    }
+    
+    private func setupActivityIndicator() {
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+        }
     }
     
     @objc func searchStockButtonPressed() {
@@ -120,6 +131,34 @@ extension SearchStockViewController: UITableViewDataSource {
 }
 
 extension SearchStockViewController: StockView {
+    func changeStocksListVisibility() {
+//        DispatchQueue.main.sync {
+            searchButton.isHidden = !presenter.isStocksListHidden
+            searchStockTextField.isHidden = !presenter.isStocksListHidden
+            stocksTableView.isHidden = presenter.isStocksListHidden
+//        }
+    }
+    
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.stocksTableView.reloadData()
+        }
+    }
+    
+    func startLoading() {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        view.bringSubviewToFront(activityIndicator)
+    }
+    
+    func stopLoading() {
+        DispatchQueue.main.async {
+            self.activityIndicator.isHidden = true
+            self.activityIndicator.stopAnimating()
+            self.view.sendSubviewToBack(self.activityIndicator)
+        }
+    }
+    
     func showAlert(_ message: String) {
         
     }

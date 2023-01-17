@@ -34,6 +34,7 @@ final class StockTableViewCell: UITableViewCell {
         cardView.snp.makeConstraints {
             $0.top.leading.equalTo(10)
             $0.bottom.trailing.equalTo(-10)
+            $0.height.equalTo(200)
         }
         
         cardView.backgroundColor = .white
@@ -43,7 +44,7 @@ final class StockTableViewCell: UITableViewCell {
         cardView.layer.shadowOpacity = 0.7
     }
     
-    private func setupRepositoryLabel() {
+    private func setupStockCodTitleLabel() {
         cardView.addSubview(stockCodTitleLabel)
 
         stockCodTitleLabel.snp.makeConstraints {
@@ -54,7 +55,7 @@ final class StockTableViewCell: UITableViewCell {
         stockCodTitleLabel.font = AppFonts.cardTitle
     }
     
-    private func setupStarsLabel() {
+    private func setupsStockCurrentValueLabel() {
         cardView.addSubview(stockCurrentValueLabel)
         
         stockCurrentValueLabel.snp.makeConstraints {
@@ -65,7 +66,7 @@ final class StockTableViewCell: UITableViewCell {
         stockCurrentValueLabel.font = AppFonts.cardSubtitle
     }
     
-    private func setupAuthorLabel() {
+    private func setupStockNameTitleLabel() {
         cardView.addSubview(stockNameTitleLabel)
         
         stockNameTitleLabel.snp.makeConstraints {
@@ -76,7 +77,7 @@ final class StockTableViewCell: UITableViewCell {
         stockNameTitleLabel.font = AppFonts.cardTitle
     }
     
-    private func setupRepoNameLabel() {
+    private func setupStockCodLabel() {
         cardView.addSubview(stockCodLabel)
         
         stockCodLabel.snp.makeConstraints {
@@ -88,7 +89,7 @@ final class StockTableViewCell: UITableViewCell {
         stockCodLabel.textColor = AppColorPalette.bluePetroleum
     }
     
-    private func setupRepoStarsLabel() {
+    private func setupStockPercentLabel() {
         cardView.addSubview(stockPercentLabel)
         
         stockPercentLabel.snp.makeConstraints {
@@ -100,12 +101,12 @@ final class StockTableViewCell: UITableViewCell {
         stockPercentLabel.textColor = AppColorPalette.yellowGold
     }
     
-    private func setupAuthorNameLabell() {
+    private func setupStockNameLabel() {
         cardView.addSubview(stockNameLabel)
         
         stockNameLabel.snp.makeConstraints {
-            $0.top.equalTo(stockNameLabel.snp.bottom).offset(screenBased(regular: 4, reduced: 3, extended: 5))
-            $0.leading.equalTo(stockNameLabel.snp.leading)
+            $0.top.equalTo(stockNameTitleLabel.snp.bottom).offset(screenBased(regular: 4, reduced: 3, extended: 5))
+            $0.leading.equalTo(stockNameTitleLabel.snp.leading)
         }
         
         stockNameLabel.font = AppFonts.cardSubtitle
@@ -133,13 +134,13 @@ extension StockTableViewCell: StockTableCellView {
         self.backgroundColor = AppColorPalette.mainBackground
 
         setupCardView()
-        setupRepositoryLabel()
-        setupStarsLabel()
-        setupRepoNameLabel()
-        setupRepoStarsLabel()
+        setupStockCodTitleLabel()
+        setupsStockCurrentValueLabel()
+        setupStockCodLabel()
+        setupStockPercentLabel()
         setupLineSeparatorView()
-        setupAuthorLabel()
-        setupAuthorNameLabell()
+        setupStockNameTitleLabel()
+        setupStockNameLabel()
     }
     
     func setStockCodTitle(_ title: String) {
@@ -156,5 +157,13 @@ extension StockTableViewCell: StockTableCellView {
     
     func setStockCurrentValue(_ value: String) {
         stockCurrentValueLabel.text = value
+    }
+    
+    func setStockCod(_ cod: String) {
+        stockCodLabel.text = cod
+    }
+    
+    func setStockName(_ name: String) {
+        stockNameLabel.text = name
     }
 }
