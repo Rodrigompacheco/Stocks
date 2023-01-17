@@ -44,7 +44,6 @@ struct LineGraphSwiftUIView: View {
     let growingState: Bool
     @State private var selectedNode: GraphNode? = nil
     @Binding private var selectedValue: StockChartItem?
-//    @Binding private var selectedDate: String?
     
     init(chartItems: [StockChartItem], growingState: Bool, selectedValue: Binding<StockChartItem?>) {
         self._selectedValue = selectedValue
@@ -69,28 +68,6 @@ struct LineGraphSwiftUIView: View {
         }
         self.graphNodes = nodes
     }
-    /*
-    init(values: [Double]) {
-        guard var maxValue = values.max(), var minValue = values.min() else {
-            graphNodes = [GraphNode]()
-            return
-        }
-        
-        maxValue = maxValue + 20
-        minValue = minValue - 20
-        
-        var nodes = [GraphNode]()
-        for i in values.indices {
-            let percentageY = 1 - Double(values[i] - minValue) / Double(maxValue - minValue)
-            let percentageX = Double(i) / Double (values.count - 1)
-            let newNode = GraphNode (value: values[i],
-                                     percentageX: percentageX,
-                                     percentageY: percentageY)
-            nodes.append(newNode)
-        }
-        self.graphNodes = nodes
-    }
-     */
     
     var body: some View {
         GeometryReader { reader in
@@ -151,10 +128,3 @@ struct LineGraphSwiftUIView: View {
             }
     }
 }
-
-//struct LineGraphSwiftUIView_Previews: PreviewProvider {
-//    static var previews: some View {
-////        StockDetailsSwiftUIView(presenter: StockDetailsPresenter(service: XCAStocksAPI(), stock: Quote(symbol: "AAPL")))
-//        StockDetailsSwiftUIView(chartData: <#StockChartData#>)
-//    }
-//}

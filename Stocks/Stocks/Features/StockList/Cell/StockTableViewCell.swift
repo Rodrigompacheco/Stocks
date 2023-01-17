@@ -19,7 +19,6 @@ final class StockTableViewCell: UITableViewCell {
     private var stockCodLabel = UILabel()
     private var stockNameLabel = UILabel()
     private var cardView = UIView()
-    private var lineSeparatorView = UIView()
     
     private var presenter: StockTableViewCellPresenter?
 
@@ -39,7 +38,7 @@ final class StockTableViewCell: UITableViewCell {
         
         cardView.backgroundColor = .white
         cardView.layer.cornerRadius = 10
-        cardView.layer.shadowOffset = CGSize(width: 0, height: 3)
+        cardView.layer.shadowOffset = CGSize(width: 0, height: 2)
         cardView.layer.shadowRadius = 10
         cardView.layer.shadowOpacity = 0.7
     }
@@ -111,20 +110,6 @@ final class StockTableViewCell: UITableViewCell {
         stockNameLabel.font = AppFonts.cardSubtitle
         stockNameLabel.textColor = AppColorPalette.bluePetroleum
     }
-
-    private func setupLineSeparatorView() {
-        cardView.addSubview(lineSeparatorView)
-        
-        lineSeparatorView.snp.makeConstraints {
-            $0.top.equalTo(stockCodLabel.snp.bottom).offset(screenBased(regular: 18, reduced: 15, extended: 20))
-            $0.leading.equalTo(10)
-            $0.trailing.equalTo(-10)
-            $0.height.equalTo(1)
-        }
-        
-        lineSeparatorView.backgroundColor = .lightGray
-        lineSeparatorView.alpha = 0.5
-    }
 }
 
 extension StockTableViewCell: StockTableCellView {
@@ -137,7 +122,6 @@ extension StockTableViewCell: StockTableCellView {
         setupsStockCurrentValueLabel()
         setupStockCodLabel()
         setupStockPercentLabel()
-//        setupLineSeparatorView()
         setupStockNameTitleLabel()
         setupStockNameLabel()
     }

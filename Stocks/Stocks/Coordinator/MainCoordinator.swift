@@ -19,32 +19,35 @@ class MainCoordinator: Coordinator {
         self.navigationController = navigationController
         self.service = service
         
-        navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationBar.prefersLargeTitles = false
         navigationController.navigationBar.barStyle = .black
         navigationController.navigationBar.barTintColor = .red
         navigationController.navigationBar.tintColor = .white
     }
     
     func start() {
-        let presenter = SearchStockPresenter(service: service)
+        let presenter = SearchStockPresenter()
         presenter.presenterCoordinatorDelegate = self
         let viewController = SearchStockViewController(presenter: presenter)
-        viewController.title = "Stocks"
         navigationController.pushViewController(viewController, animated: false)
     }
 }
 
-extension MainCoordinator: SearchStockPresenterCoordinatorDelegate {
+extension MainCoordinator: StockListPresenterCoordinatorDelegate {
     func didSelectStock(stock: Quote) {
         let presenter = StockDetailsPresenter(service: service, stock: stock)
-//        presenter.fetchStockChartDetails()
-        
-    //    guard let chartData = presenter.stockDetails else { return }
-//        presenter.fetchStockChartDetails()
         let viewController = UIHostingController(rootView: StockDetailsSwiftUIView(presenter: presenter))
-        
-//        let viewController = StockDetailsViewController(presenter: presenter)
         viewController.title = stock.symbol.uppercased()
+        navigationController.pushViewController(viewController, animated: true)
+    }
+}
+
+extension MainCoordinator: SearchStockPresenterCoordinatorDelegate {
+    func didSelectSearch(with text: String) {
+        let presenter = StockListPresenter(service: service, search: text)
+        presenter.presenterCoordinatorDelegate = self
+        let viewController = StockListViewController(presenter: presenter)
+        viewController.title = "Stocks"
         navigationController.pushViewController(viewController, animated: true)
     }
 }
