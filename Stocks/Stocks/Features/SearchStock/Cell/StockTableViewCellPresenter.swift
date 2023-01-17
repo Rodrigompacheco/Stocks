@@ -12,6 +12,7 @@ class StockTableViewCellPresenter {
     
     private weak var view: StockTableCellView?
     private let stock: Quote
+    var growingStatus: Bool = false
     
     init(stock: Quote) {
         self.stock = stock
@@ -25,10 +26,19 @@ class StockTableViewCellPresenter {
     func setupView() {
         view?.setupView()
         view?.setStockCodTitle("Id:")
-        view?.setStockNameTitle("Name:")
+        view?.setStockNameTitle(stock.displayName ?? "-")
         view?.setStockCod(stock.symbol)
-        view?.setStockName(stock.displayName ?? "No data")
-        view?.setStockPercentStatus(String(stock.regularMarketChange ?? 0))
-        view?.setStockCurrentValue(String(stock.postMarketPrice ?? 0))
+        
+        let marketPercent = round(1000 * (stock.regularMarketChangePercent ?? 0)) / 1000
+        view?.setStockPercentStatus(String("\(marketPercent)%"))
+        
+        let currency = stock.currency ?? ""
+        let makertPrice = round(100 * (stock.regularMarketPrice ?? 0)) / 100
+        view?.setStockCurrentValue(String("\(makertPrice) \(currency)"))
+        
+        if stock.regularMarketChange ?? 0 > 0 {
+            growingStatus = true
+        }
+        view?.changeStockPercentStatus()
     }
 }

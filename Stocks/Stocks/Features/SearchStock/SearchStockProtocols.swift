@@ -16,6 +16,7 @@ protocol StockTableCellView: AnyObject {
     func setStockCurrentValue(_ value: String)
     func setStockCod(_ cod: String)
     func setStockName(_ name: String)
+    func changeStockPercentStatus()
 }
 
 protocol StockView: AnyObject{

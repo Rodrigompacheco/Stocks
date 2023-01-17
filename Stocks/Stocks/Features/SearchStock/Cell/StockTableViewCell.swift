@@ -33,8 +33,8 @@ final class StockTableViewCell: UITableViewCell {
         
         cardView.snp.makeConstraints {
             $0.top.leading.equalTo(10)
-            $0.bottom.trailing.equalTo(-10)
-            $0.height.equalTo(200)
+            $0.trailing.equalTo(-10)
+            $0.height.equalTo(80)
         }
         
         cardView.backgroundColor = .white
@@ -70,7 +70,7 @@ final class StockTableViewCell: UITableViewCell {
         cardView.addSubview(stockNameTitleLabel)
         
         stockNameTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(lineSeparatorView.snp.bottom).offset(screenBased(regular: 18, reduced: 15, extended: 20))
+            $0.top.equalTo(stockCodTitleLabel.snp.bottom).offset(5)
             $0.leading.equalTo(stockCodTitleLabel.snp.leading)
         }
         
@@ -81,8 +81,8 @@ final class StockTableViewCell: UITableViewCell {
         cardView.addSubview(stockCodLabel)
         
         stockCodLabel.snp.makeConstraints {
-            $0.top.equalTo(stockCodTitleLabel.snp.bottom).offset(screenBased(regular: 4, reduced: 3, extended: 5))
-            $0.leading.equalTo(stockCodTitleLabel.snp.leading)
+            $0.top.equalTo(stockCodTitleLabel.snp.top)
+            $0.leading.equalTo(stockCodTitleLabel.snp.trailing).offset(5)
         }
         
         stockCodLabel.font = AppFonts.cardSubtitle
@@ -93,20 +93,19 @@ final class StockTableViewCell: UITableViewCell {
         cardView.addSubview(stockPercentLabel)
         
         stockPercentLabel.snp.makeConstraints {
-            $0.centerY.equalTo(stockCodLabel)
+            $0.top.equalTo(stockCurrentValueLabel.snp.bottom).offset(5)
             $0.trailing.equalTo(stockCurrentValueLabel.snp.trailing)
         }
         
         stockPercentLabel.font = AppFonts.cardSubtitle
-        stockPercentLabel.textColor = AppColorPalette.yellowGold
     }
     
     private func setupStockNameLabel() {
         cardView.addSubview(stockNameLabel)
         
         stockNameLabel.snp.makeConstraints {
-            $0.top.equalTo(stockNameTitleLabel.snp.bottom).offset(screenBased(regular: 4, reduced: 3, extended: 5))
-            $0.leading.equalTo(stockNameTitleLabel.snp.leading)
+            $0.top.equalTo(stockNameTitleLabel.snp.top)
+            $0.leading.equalTo(stockNameTitleLabel.snp.trailing).offset(5)
         }
         
         stockNameLabel.font = AppFonts.cardSubtitle
@@ -138,7 +137,7 @@ extension StockTableViewCell: StockTableCellView {
         setupsStockCurrentValueLabel()
         setupStockCodLabel()
         setupStockPercentLabel()
-        setupLineSeparatorView()
+//        setupLineSeparatorView()
         setupStockNameTitleLabel()
         setupStockNameLabel()
     }
@@ -165,5 +164,15 @@ extension StockTableViewCell: StockTableCellView {
     
     func setStockName(_ name: String) {
         stockNameLabel.text = name
+    }
+    
+    func changeStockPercentStatus() {
+        guard let presenter = presenter else { return }
+        
+        if presenter.growingStatus {
+            stockPercentLabel.textColor = AppColorPalette.green
+        } else {
+            stockPercentLabel.textColor = AppColorPalette.red
+        }
     }
 }

@@ -126,7 +126,7 @@ extension SearchStockViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return screenBased(regular: 196, reduced: 188, extended: 200)
+            return screenBased(regular: 90, reduced: 70, extended: 110)
         } else {
             return 50
         }
