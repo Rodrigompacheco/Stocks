@@ -41,6 +41,9 @@
 		41DC601E29763EAD0087B017 /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC601C29763EAD0087B017 /* UIScreenExtension.swift */; };
 		41DC6020297648040087B017 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC601F297648040087B017 /* UITableViewExtension.swift */; };
 		41DC6021297648040087B017 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC601F297648040087B017 /* UITableViewExtension.swift */; };
+		41DC6024297668FB0087B017 /* StockDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC6023297668FB0087B017 /* StockDetailsViewController.swift */; };
+		41DC60262976693C0087B017 /* StockDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC60252976693C0087B017 /* StockDetailsPresenter.swift */; };
+		41DC6028297669AD0087B017 /* StockDetailsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC6027297669AD0087B017 /* StockDetailsProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +89,9 @@
 		41DC601929763E790087B017 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		41DC601C29763EAD0087B017 /* UIScreenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
 		41DC601F297648040087B017 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		41DC6023297668FB0087B017 /* StockDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailsViewController.swift; sourceTree = "<group>"; };
+		41DC60252976693C0087B017 /* StockDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailsPresenter.swift; sourceTree = "<group>"; };
+		41DC6027297669AD0087B017 /* StockDetailsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailsProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +238,7 @@
 		41DC5FEE29761DF20087B017 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				41DC6022297668AF0087B017 /* StockDatails */,
 				41DC5FF9297621AB0087B017 /* SearchStock */,
 			);
 			path = Features;
@@ -264,6 +271,16 @@
 				41DC6013297638050087B017 /* StockTableViewCellPresenter.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		41DC6022297668AF0087B017 /* StockDatails */ = {
+			isa = PBXGroup;
+			children = (
+				41DC60252976693C0087B017 /* StockDetailsPresenter.swift */,
+				41DC6027297669AD0087B017 /* StockDetailsProtocols.swift */,
+				41DC6023297668FB0087B017 /* StockDetailsViewController.swift */,
+			);
+			path = StockDatails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,9 +421,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41DC60262976693C0087B017 /* StockDetailsPresenter.swift in Sources */,
 				41DC5FF129761F390087B017 /* Coordinator.swift in Sources */,
 				41DC5FB929761C2F0087B017 /* ViewController.swift in Sources */,
 				41DC601729763D8E0087B017 /* AppFonts.swift in Sources */,
+				41DC6024297668FB0087B017 /* StockDetailsViewController.swift in Sources */,
 				41DC6020297648040087B017 /* UITableViewExtension.swift in Sources */,
 				41DC5FB529761C2F0087B017 /* AppDelegate.swift in Sources */,
 				41DC6007297623F40087B017 /* APIError.swift in Sources */,
@@ -414,6 +433,7 @@
 				41DC60012976221B0087B017 /* SearchStockProtocols.swift in Sources */,
 				41DC5FB729761C2F0087B017 /* SceneDelegate.swift in Sources */,
 				41DC601A29763E790087B017 /* Global.swift in Sources */,
+				41DC6028297669AD0087B017 /* StockDetailsProtocols.swift in Sources */,
 				41DC5FFB297621D70087B017 /* SearchStockPresenter.swift in Sources */,
 				41DC5FFE297621E50087B017 /* SearchStockViewController.swift in Sources */,
 				41DC6014297638050087B017 /* StockTableViewCellPresenter.swift in Sources */,

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import XCAStocksAPI
 
 protocol StockTableCellView: AnyObject {
     func setupView()
@@ -23,4 +24,8 @@ protocol StockView: AnyObject{
     func reloadData()
     func startLoading()
     func stopLoading()
+}
+
+protocol SearchStockPresenterCoordinatorDelegate: AnyObject {
+    func didSelectStock(stock: Quote)
 }

@@ -18,6 +18,7 @@ class SearchStockPresenter {
     var isStocksListHidden = true
     
     private weak var view: StockView?
+    weak var presenterCoordinatorDelegate: SearchStockPresenterCoordinatorDelegate?
     
     init(service: IStocksAPI) {
         self.service = service
@@ -25,10 +26,6 @@ class SearchStockPresenter {
     
     func attachView(view: StockView) {
         self.view = view
-    }
-    
-    private func fetchStock(byTitle title: String) {
-//        service.fetchStock(title)
     }
     
     func searchStockButtonPressed(withText text: String) {
@@ -57,6 +54,15 @@ class SearchStockPresenter {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    func stockSelected(at index: Int) {
+        guard index <= stocks.count else {
+            view?.showAlert("Error with this Stock")
+            return
+        }
+        let stock = stocks[index]
+        presenterCoordinatorDelegate?.didSelectStock(stock: stock)
     }
     
     func setSearch(stock: String) {

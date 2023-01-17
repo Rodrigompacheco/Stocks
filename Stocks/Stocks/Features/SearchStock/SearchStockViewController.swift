@@ -76,6 +76,7 @@ class SearchStockViewController: UIViewController {
             $0.leading.trailing.bottom.equalToSuperview()
         }
         
+        stocksTableView.delegate = self
         stocksTableView.dataSource = self
         stocksTableView.separatorColor = .clear
         stocksTableView.backgroundColor = AppColorPalette.mainBackground
@@ -127,6 +128,12 @@ extension SearchStockViewController: UITableViewDataSource {
         } else {
             return 50
         }
+    }
+}
+
+extension SearchStockViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.stockSelected(at: indexPath.row)
     }
 }
 
