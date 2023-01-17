@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 import XCAStocksAPI
 
 class MainCoordinator: Coordinator {
@@ -37,7 +38,9 @@ extension MainCoordinator: SearchStockPresenterCoordinatorDelegate {
     func didSelectStock(stock: Quote) {
         let presenter = StockDetailsPresenter(service: service, stock: stock)
         
-        let viewController = StockDetailsViewController(presenter: presenter)
+        let viewController = UIHostingController(rootView: StockDetailsSwiftUIView())//StockDetailsSwiftUIView(presenter: presenter))
+        
+//        let viewController = StockDetailsViewController(presenter: presenter)
         viewController.title = stock.symbol.uppercased()
         navigationController.pushViewController(viewController, animated: true)
     }

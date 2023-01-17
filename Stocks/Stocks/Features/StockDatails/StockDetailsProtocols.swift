@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+protocol StockDetailsView: AnyObject{
+    func showAlert(_ message: String)
+    func startLoading()
+    func stopLoading()
+}
